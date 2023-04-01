@@ -9,9 +9,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * @author zk
- * @date 2023/4/1
- * @description: 线程池配置
+ * author zk
+ * date 2023/4/1
+ * description: 线程池配置
  */
 
 @Configuration

@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @author zk
- * @date 2023/3/30 12:40
- * @desciption: 是否是管理员枚举
+ * author zk
+ * date 2023/3/30 12:40
+ * description: 是否是管理员枚举
  */
 
 public enum AdminEnum {

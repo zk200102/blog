@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author zk
- * @date 2023/3/31
- * @description: md5配置类
+ * author zk
+ * date 2023/3/31
+ * description: md5配置类
  */
 @Configuration
 public class Md5Config implements InitializingBean {

@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *  Mapper 接口
  * </p>
  *
- * @author zk
+ * author zk
  * @since 2023-04-01
  */
 public interface ArticleBodyMapper extends BaseMapper<ArticleBody> {

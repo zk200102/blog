@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author zk
- * @date 2023/3/28 19:36
- * @desciption: 错误码枚举
+ * author zk
+ * date 2023/3/28 19:36
+ * description: 错误码枚举
  */
 @Getter
 @AllArgsConstructor

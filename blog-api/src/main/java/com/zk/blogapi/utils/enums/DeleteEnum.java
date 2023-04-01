@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @author zk
- * @date 2023/3/30 11:50
- * @desciption: 删除枚举
+ * author zk
+ * date 2023/3/30 11:50
+ * description: 删除枚举
  */
 public enum DeleteEnum {
 

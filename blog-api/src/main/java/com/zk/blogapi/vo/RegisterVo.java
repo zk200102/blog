@@ -3,9 +3,9 @@ package com.zk.blogapi.vo;
 import lombok.Data;
 
 /**
- * @author zk
- * @date 2023/3/30 9:58
- * @desciption: 注册实体类
+ * author zk
+ * date 2023/3/30 9:58
+ * description: 注册实体类
  */
 @Data
 public class RegisterVo {

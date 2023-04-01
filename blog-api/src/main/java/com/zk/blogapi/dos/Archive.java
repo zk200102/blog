@@ -3,9 +3,9 @@ package com.zk.blogapi.dos;
 import lombok.Data;
 
 /**
- * @author zk
- * @date 2023/3/28 15:55
- * @desciption: 文章归档实体类
+ * author zk
+ * date 2023/3/28 15:55
+ * description: 文章归档实体类
  */
 @Data
 public class Archive {

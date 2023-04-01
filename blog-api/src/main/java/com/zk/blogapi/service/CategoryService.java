@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  *  服务类
  * </p>
  *
- * @author zk
+ * author zk
  * @since 2023-04-01
  */
 public interface CategoryService extends IService<Category> {

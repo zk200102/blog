@@ -9,24 +9,24 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 
 /**
- * @author zk
- * @date 2023/3/28 16:42
- * @desciption: jwt相关方法
+ * author zk
+ * date 2023/3/28 16:42
+ * description: jwt相关方法
  */
 
 public class JwtUtils {
     /**
-     * @author: zk
-     * @date: 2023/3/30
-     * @description: 私有化无参构造，禁止创建JwtUtils实例
-     * @return: null
+     * author: zk
+     * date: 2023/3/30
+     * description: 私有化无参构造，禁止创建JwtUtils实例
+     * return: null
      */
     private JwtUtils() {
     }
     /**
      * 生成token
-     * @param userId
-     * @return
+     * param userId
+     * return
      */
     public static String createToken(Long userId){
         String token = Jwts.builder().claim("userId", userId)
@@ -39,8 +39,8 @@ public class JwtUtils {
 
     /**
      * 解析token，获取数据
-     * @param token
-     * @return
+     * param token
+     * return
      */
     public static String checkToken(String token){
         try {

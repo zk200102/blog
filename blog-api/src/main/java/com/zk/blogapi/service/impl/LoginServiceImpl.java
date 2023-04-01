@@ -22,9 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author zk
- * @date 2023/3/28 19:31
- * @desciption: 登陆实现类
+ * author zk
+ * date 2023/3/28 19:31
+ * description: 登陆实现类
  */
 @Service
 @RequiredArgsConstructor

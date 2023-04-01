@@ -6,9 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author zk
- * @date 2023/3/31
- * @description: jwt配置文件
+ * author zk
+ * date 2023/3/31
+ * description: jwt配置文件
  */
 @Data
 @Configuration

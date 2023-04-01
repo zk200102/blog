@@ -12,9 +12,9 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author zk
- * @date 2023/3/26 14:59
- * @desciption: 配置swagger
+ * author zk
+ * date 2023/3/26 14:59
+ * description: 配置swagger
  */
 @EnableSwagger2
 @EnableKnife4j

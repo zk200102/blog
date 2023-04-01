@@ -14,9 +14,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 /**
- * @author zk
- * @date 2023/3/26 15:26
- * @desciption: webmvc相关配置
+ * author zk
+ * date 2023/3/26 15:26
+ * description: webmvc相关配置
  * 解决跨域问题
  * 注册拦截器
  */

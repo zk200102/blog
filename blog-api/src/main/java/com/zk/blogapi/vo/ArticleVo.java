@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author zk
- * @date 2023/3/26 16:20
- * @desciption: 文章实体类
+ * author zk
+ * date 2023/3/26 16:20
+ * description: 文章实体类
  */
 @Data
 public class ArticleVo {

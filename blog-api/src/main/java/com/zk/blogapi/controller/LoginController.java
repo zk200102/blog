@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author zk
- * @date 2023/3/28 16:11
- * @desciption: 登陆控制器
+ * author zk
+ * date 2023/3/28 16:11
+ * description: 登陆控制器
  */
 @RestController
 @RequestMapping("login")

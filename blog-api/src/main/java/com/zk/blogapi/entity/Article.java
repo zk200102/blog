@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * 
  * </p>
  *
- * @author zk
+ * author zk
  * @since 2023-03-26
  */
 @Data

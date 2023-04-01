@@ -12,9 +12,9 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author zk
- * @date 2023/3/26 15:14
- * @desciption: 代码生成器
+ * author zk
+ * date 2023/3/26 15:14
+ * description: 代码生成器
  */
 
 public class CodeGenerator {

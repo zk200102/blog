@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author zk
- * @date 2023/3/29 12:26
- * @desciption: 退出登录
+ * author zk
+ * date 2023/3/29 12:26
+ * description: 退出登录
  */
 @RestController
 @RequestMapping("logout")

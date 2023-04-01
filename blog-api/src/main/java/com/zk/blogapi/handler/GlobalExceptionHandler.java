@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @author zk
- * @date 2023/3/27 17:00
- * @desciption: 统一异常处理
+ * author zk
+ * date 2023/3/27 17:00
+ * description: 统一异常处理
  */
 @Slf4j
 @ControllerAdvice

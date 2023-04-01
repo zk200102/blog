@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
- * @author zk
- * @date 2023/4/1
- * @description:
+ * author zk
+ * date 2023/4/1
+ * description:
  */
 @Service
 public class ThreadServiceImpl implements ThreadService {

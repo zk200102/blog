@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author zk
- * @date 2023/3/30 10:21
- * @desciption: 注册控制器
+ * author zk
+ * date 2023/3/30 10:21
+ * description: 注册控制器
  */
 @RestController
 @RequestMapping("register")

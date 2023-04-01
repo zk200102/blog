@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author zk
- * @date 2023/3/26 15:22
- * @desciption: mybatis相关配置
+ * author zk
+ * date 2023/3/26 15:22
+ * description: mybatis相关配置
  */
 @Configuration
 @MapperScan("com.zk.blogapi.mapper")

@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * @author zk
- * @date 2023/3/26 15:44
- * @desciption: 返回结果类
+ * author zk
+ * date 2023/3/26 15:44
+ * description: 返回结果类
  */
 @Data
 @AllArgsConstructor

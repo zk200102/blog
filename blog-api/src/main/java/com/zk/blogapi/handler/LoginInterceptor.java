@@ -18,9 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author zk
- * @date 2023/3/30 13:31
- * @desciption: 登陆拦截器
+ * author zk
+ * date 2023/3/30 13:31
+ * description: 登陆拦截器
  */
 @Configuration
 @Slf4j
