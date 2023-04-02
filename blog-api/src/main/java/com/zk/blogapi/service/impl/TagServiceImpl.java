@@ -1,9 +1,9 @@
 package com.zk.blogapi.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zk.blogapi.entity.Tag;
 import com.zk.blogapi.mapper.TagMapper;
 import com.zk.blogapi.service.TagService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zk.blogapi.vo.TagVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -37,6 +36,7 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
     }
     private TagVo copy(Tag tag) {
         TagVo tagVo = new TagVo();
+        tagVo.setId(tag.getId().toString());
         BeanUtils.copyProperties(tag,tagVo);
         return tagVo;
     }

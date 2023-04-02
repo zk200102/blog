@@ -34,7 +34,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 //                .maxAge(3600)
 //                .allowedHeaders("*");
     }
-
+//     注册拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor).addPathPatterns("/test");
