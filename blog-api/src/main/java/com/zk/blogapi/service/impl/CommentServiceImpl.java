@@ -74,7 +74,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             commentVo.setChildrens(commentVos);
         }
         Long toUid = comment.getToUid();
-//        判断是否有回复对象
+//        判断评论是否有回复对象
         if (toUid!=0){
             SysUser user1 = sysUserService.getById(toUid);
             UserVo userVo1 = new UserVo();
