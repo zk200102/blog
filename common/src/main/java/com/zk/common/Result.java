@@ -27,6 +27,9 @@ public class Result {
     public static Result success(Object data){
         return new Result(true,200,"success", data);
     }
+    public static Result success(){
+        return new Result(true,200,"success", null);
+    }
     public static Result fail(int code,String message){
         return new Result(false,code,message,null);
     }

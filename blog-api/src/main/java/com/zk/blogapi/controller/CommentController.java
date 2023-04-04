@@ -2,6 +2,7 @@ package com.zk.blogapi.controller;
 
 
 import com.zk.blogapi.service.CommentService;
+import com.zk.blogapi.vo.param.CommentParam;
 import com.zk.common.Result;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class CommentController {
     @GetMapping("article/{id}")
     public Result comments(@PathVariable Long id){
         return commentService.commentByArticleId(id);
+    }
+
+    @ApiOperation("添加评论信息")
+    @PostMapping ("create/change")
+    public Result change(@RequestBody CommentParam commentParam){
+        return commentService.change(commentParam);
     }
 }
 

@@ -2,6 +2,7 @@ package com.zk.blogapi.service;
 
 import com.zk.blogapi.entity.Comment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zk.blogapi.vo.param.CommentParam;
 import com.zk.common.Result;
 
 /**
@@ -22,4 +23,12 @@ public interface CommentService extends IService<Comment> {
      * return: com.zk.common.Result
      */
     Result commentByArticleId(Long id);
+    /**
+     * author: zk
+     * date: 2023/4/4
+     * description: 保存评论信息
+     * param commentParam:
+     * return: com.zk.common.Result
+     */
+    Result change(CommentParam commentParam);
 }

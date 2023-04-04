@@ -1,18 +1,21 @@
 package com.zk.blogapi.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zk.blogapi.entity.Comment;
 import com.zk.blogapi.entity.SysUser;
 import com.zk.blogapi.mapper.CommentMapper;
 import com.zk.blogapi.service.CommentService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zk.blogapi.service.SysUserService;
+import com.zk.blogapi.utils.UserThreadLocal;
 import com.zk.blogapi.vo.CommentVo;
 import com.zk.blogapi.vo.UserVo;
+import com.zk.blogapi.vo.param.CommentParam;
 import com.zk.common.Result;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,32 @@ import java.util.List;
 public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> implements CommentService {
     @Autowired
     private SysUserService sysUserService;
+    @Transactional
+    @Override
+    public Result change(CommentParam commentParam) {
+        Long articleId = commentParam.getArticleId();
+        String content = commentParam.getContent();
+        Long parent = commentParam.getParent();
+        Long toUserid = commentParam.getToUserid();
+
+        SysUser account = UserThreadLocal.getAccount();
+        Comment comment = new Comment();
+        comment.setAuthorId(account.getId());
+        comment.setContent(content);
+        comment.setArticleId(Math.toIntExact(articleId));
+        comment.setCreateDate(System.currentTimeMillis());
+//        校验参数
+        if (parent==null||parent==0){
+            comment.setLevel(String.valueOf(1));
+        }else {
+            comment.setLevel(String.valueOf(2));
+        }
+        comment.setParentId(parent==null?0:parent);
+        comment.setToUid(toUserid==null?0:toUserid);
+        baseMapper.insert(comment);
+        return Result.success();
+    }
+
     @Override
     public Result commentByArticleId(Long id) {
 //        根据文章id查询，level为1的评论
