@@ -4,6 +4,7 @@ import com.zk.blogapi.dos.Archive;
 import com.zk.blogapi.entity.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zk.blogapi.vo.ArticleVo;
+import com.zk.blogapi.vo.param.ArticleParam;
 import com.zk.blogapi.vo.param.PageParams;
 import com.zk.common.Result;
 
@@ -58,4 +59,12 @@ public interface ArticleService extends IService<Article> {
      * return: com.zk.common.Result
      */
     Result findArticleById(Long id);
+    /**
+     * author: zk
+     * date: 2023/4/5
+     * description: 发布文章
+     * param articleParam:
+     * return: com.zk.common.Result
+     */
+    Result publish(ArticleParam articleParam);
 }

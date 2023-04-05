@@ -34,6 +34,11 @@ public class TagController {
         List<Tag> list = tagService.listHot(3);
         return Result.success(list);
     }
+    @ApiOperation("获取所有标签")
+    @GetMapping
+    public Result findAll(){
+        return tagService.findAll();
+    }
 
 }
 

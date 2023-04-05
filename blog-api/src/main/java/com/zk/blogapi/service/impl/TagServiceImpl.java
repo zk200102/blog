@@ -5,6 +5,7 @@ import com.zk.blogapi.entity.Tag;
 import com.zk.blogapi.mapper.TagMapper;
 import com.zk.blogapi.service.TagService;
 import com.zk.blogapi.vo.TagVo;
+import com.zk.common.Result;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -12,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -59,5 +61,17 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
 //        }).collect(Collectors.toList());
 
         return list;
+    }
+
+    @Override
+    public Result findAll() {
+        List<Tag> list = baseMapper.selectList(null);
+        List<TagVo> tagVos = list.stream().map(tag -> {
+            TagVo tagVo = new TagVo();
+            tagVo.setId(String.valueOf(tag.getId()));
+            BeanUtils.copyProperties(tag, tagVo);
+            return tagVo;
+        }).collect(Collectors.toList());
+        return Result.success(tagVos);
     }
 }

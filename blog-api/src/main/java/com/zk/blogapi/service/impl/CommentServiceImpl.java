@@ -44,7 +44,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         Comment comment = new Comment();
         comment.setAuthorId(account.getId());
         comment.setContent(content);
-        comment.setArticleId(Math.toIntExact(articleId));
+        comment.setArticleId(articleId);
         comment.setCreateDate(System.currentTimeMillis());
 //        校验参数
         if (parent==null||parent==0){

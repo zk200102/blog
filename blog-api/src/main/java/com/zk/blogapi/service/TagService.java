@@ -3,6 +3,7 @@ package com.zk.blogapi.service;
 import com.zk.blogapi.entity.Tag;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zk.blogapi.vo.TagVo;
+import com.zk.common.Result;
 
 import java.util.List;
 
@@ -31,4 +32,11 @@ public interface TagService extends IService<Tag> {
      * return: java.util.List<com.zk.blogapi.entity.Tag>
      */
     List<Tag> listHot(int limit);
+    /**
+     * author: zk
+     * date: 2023/4/5
+     * description: 获取使用标签
+     * return: com.zk.common.Result
+     */
+    Result findAll();
 }

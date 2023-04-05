@@ -4,15 +4,13 @@ package com.zk.blogapi.controller;
 import com.zk.blogapi.dos.Archive;
 import com.zk.blogapi.service.ArticleService;
 import com.zk.blogapi.vo.ArticleVo;
+import com.zk.blogapi.vo.param.ArticleParam;
 import com.zk.blogapi.vo.param.PageParams;
 import com.zk.common.Result;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -60,6 +58,10 @@ public class ArticleController {
     public Result findArticleById(@PathVariable Long id){
         return articleService.findArticleById(id);
     }
-
+    @ApiOperation("发布文章")
+    @PostMapping("publish")
+    public Result publish(@RequestBody ArticleParam articleParam){
+        return articleService.publish(articleParam);
+    }
 }
 

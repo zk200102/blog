@@ -3,22 +3,22 @@ package com.zk.blogapi.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zk.blogapi.dos.Archive;
-import com.zk.blogapi.entity.Article;
-import com.zk.blogapi.entity.ArticleBody;
-import com.zk.blogapi.entity.Category;
+import com.zk.blogapi.entity.*;
+import com.zk.blogapi.mapper.ArticleBodyMapper;
 import com.zk.blogapi.mapper.ArticleMapper;
+import com.zk.blogapi.mapper.ArticleTagMapper;
 import com.zk.blogapi.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zk.blogapi.vo.ArticleBodyVo;
-import com.zk.blogapi.vo.ArticleVo;
-import com.zk.blogapi.vo.CategoryVo;
-import com.zk.blogapi.vo.UserVo;
+import com.zk.blogapi.utils.UserThreadLocal;
+import com.zk.blogapi.vo.*;
+import com.zk.blogapi.vo.param.ArticleParam;
 import com.zk.blogapi.vo.param.PageParams;
 import com.zk.common.Result;
 import org.joda.time.DateTime;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +45,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     private SysUserService sysUserService;
     @Autowired
     private ThreadService threadService;
+    @Autowired
+    private ArticleTagMapper articleTagMapper;
+
     @Override
     public List<ArticleVo> listArticle(PageParams pageParams) {
         LambdaQueryWrapper<Article> qw = new LambdaQueryWrapper<>();
@@ -82,6 +85,48 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public List<Archive> getListArchives() {
         return baseMapper.getListArchives();
+    }
+    @Transactional
+    @Override
+    public Result publish(ArticleParam articleParam) {
+//        获取threadlocal里的用户信息（前提是用户要登陆，即配置拦截器拦截此接口）
+        SysUser account = UserThreadLocal.getAccount();
+        Article article = new Article();
+        article.setAuthorId(account.getId());
+
+        article.setCommentCounts(0);
+        article.setCreateDate(System.currentTimeMillis());
+        article.setSummary(articleParam.getSummary());
+        article.setTitle(articleParam.getTitle());
+        article.setViewCounts(0);
+        article.setWeight(Article.Article_Common);
+        article.setCategoryId(Integer.valueOf(articleParam.getCategory().getId()));
+//        先执行插入，会自动生成主键id，后续就可以拿到id
+        baseMapper.insert(article);
+//        标签保存到关联表
+        List<TagVo> tags = articleParam.getTags();
+        if (tags !=null){
+            tags.forEach(tagVo -> {
+                Long id = article.getId();
+                ArticleTag articleTag = new ArticleTag();
+                articleTag.setTagId(Long.valueOf(tagVo.getId()));
+                articleTag.setArticleId(id);
+                articleTagMapper.insert(articleTag);
+            });
+        }
+//        文章内容存储
+        ArticleBody articleBody = new ArticleBody();
+        articleBody.setContent(articleParam.getBody().getContent());
+        articleBody.setContentHtml(articleParam.getBody().getContentHtml());
+        articleBody.setArticleId(article.getId());
+        articleBodyService.save(articleBody);
+//
+        article.setBodyId(articleBody.getId());
+        baseMapper.updateById(article);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id",article.getId().toString());
+        return Result.success(map);
     }
 
     @Override

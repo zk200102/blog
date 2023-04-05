@@ -38,7 +38,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 //     注册拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/test").addPathPatterns("/comments/create/change");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/test")
+                .addPathPatterns("/comments/create/change")
+                .addPathPatterns("/articles/publish");
     }
     //  配置fastjson全局序列化，设置转换规则与枚举转换规则
     @Override

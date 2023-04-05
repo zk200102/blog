@@ -54,6 +54,6 @@ public class Article implements Serializable {
 
     @ApiModelProperty(value = "类别id")
     private Integer categoryId;
-
-
+    public static Integer Article_Common = 1;
+    public static Integer Article_Top = 2;
 }
