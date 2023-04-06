@@ -63,7 +63,7 @@ public class CodeGenerator {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("ms_article_tag");
+        strategy.setInclude("ms_sys_log");
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setTablePrefix("ms_"); //生成实体时去掉表前缀
 

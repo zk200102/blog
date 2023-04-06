@@ -3,12 +3,11 @@ package com.zk.blogapi.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zk.blogapi.entity.SysUser;
 import com.zk.blogapi.mapper.SysUserMapper;
 import com.zk.blogapi.service.SysUserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zk.blogapi.utils.JwtUtils;
-import com.zk.blogapi.utils.enums.ErrorCode;
 import com.zk.blogapi.vo.LoginUserVo;
 import com.zk.common.Result;
 import org.apache.commons.lang.StringUtils;
@@ -16,6 +15,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+
+import static com.zk.blogapi.utils.enums.ErrorCode.TOKEN_ERROR;
 
 /**
  * <p>
@@ -41,10 +42,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public Result getUserByToken(String token) {
 //        判断token是否存在
-        if (StringUtils.isBlank(token)) return Result.fail(ErrorCode.TOKEN_ERROR.getCode(),ErrorCode.TOKEN_ERROR.getMsg());
+        if (StringUtils.isBlank(token)) return Result.fail(TOKEN_ERROR.getCode(), TOKEN_ERROR.getMsg());
         String userId = JwtUtils.checkToken(token);
         if (userId.isEmpty()){
-            return Result.fail(ErrorCode.TOKEN_ERROR.getCode(),ErrorCode.TOKEN_ERROR.getMsg());
+            return Result.fail(TOKEN_ERROR.getCode(), TOKEN_ERROR.getMsg());
         }
         String stringUser = stringRedisTemplate.opsForValue().get("TOKEN_"+token);
         SysUser sysUser = JSON.parseObject(stringUser, SysUser.class);

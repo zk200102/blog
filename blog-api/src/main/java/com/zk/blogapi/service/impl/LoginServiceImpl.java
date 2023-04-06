@@ -21,6 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.zk.blogapi.utils.enums.AdminEnum.ADMIN_TRUE;
+import static com.zk.blogapi.utils.enums.DeleteEnum.DELETE_FALSE;
+import static com.zk.blogapi.utils.enums.ErrorCode.PARAM_ERROR;
+
 /**
  * author zk
  * date 2023/3/28 19:31
@@ -34,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Result login(String username, String password) {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)){
-            return Result.fail(ErrorCode.PARAM_ERROR.getCode(),ErrorCode.PARAM_ERROR.getMsg());
+            return Result.fail(PARAM_ERROR.getCode(), PARAM_ERROR.getMsg());
         }
         //加密密码，比对数据库密码
         password = DigestUtils.md5Hex(password + Md5Config.MD5_SLOT);
@@ -60,7 +64,7 @@ public class LoginServiceImpl implements LoginService {
         String nickname = registerVo.getNickname();
         String password = registerVo.getPassword();
         if (StringUtils.isBlank(account) || StringUtils.isBlank(password) || StringUtils.isBlank(nickname)){
-            return Result.fail(ErrorCode.PARAM_ERROR.getCode(),ErrorCode.PARAM_ERROR.getMsg());
+            return Result.fail(PARAM_ERROR.getCode(), PARAM_ERROR.getMsg());
         }
 //        判断用户是否存在
         SysUser sysUser = sysUserService.findUserByUsername(account);
@@ -75,8 +79,8 @@ public class LoginServiceImpl implements LoginService {
         user.setCreateDate(System.currentTimeMillis());
         user.setLastLogin(System.currentTimeMillis());
         user.setAvatar("/static/img/logo.b3a48c0.png");
-        user.setAdmin(AdminEnum.ADMIN_TRUE);
-        user.setDeleted(DeleteEnum.DELETE_FALSE);
+        user.setAdmin(ADMIN_TRUE);
+        user.setDeleted(DELETE_FALSE);
         user.setSalt("");
         user.setStatus("");
         user.setEmail("");

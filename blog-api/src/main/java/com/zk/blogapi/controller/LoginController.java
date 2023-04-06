@@ -1,6 +1,8 @@
 package com.zk.blogapi.controller;
 
+import com.zk.blogapi.annotation.LogAnnotation;
 import com.zk.blogapi.service.LoginService;
+import com.zk.blogapi.utils.enums.LogTypeEnum;
 import com.zk.blogapi.vo.param.LoginParam;
 import com.zk.common.Result;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +22,7 @@ public class LoginController {
 
     @PostMapping
     @ApiOperation("登陆")
+    @LogAnnotation(model = "登陆",logType= LogTypeEnum.QUERY,desc = "登陆")
     public Result login(@RequestBody LoginParam loginParam){
         return loginService.login(loginParam.getAccount(),loginParam.getPassword());
     }

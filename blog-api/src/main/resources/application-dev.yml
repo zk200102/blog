@@ -1,0 +1,39 @@
+server:
+  port: 8888
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: zk_blog
+  datasource:
+#    TODO 配置拦截数据库
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT%2B8
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #  TODO  配置连接池类型
+    type: com.alibaba.druid.pool.DruidDataSource
+#---------------------------mybatis---------------------------------
+mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/zk/blogapi/mapper/xml/*.xml
+  #  扫描枚举类所在的包
+  type-enums-package: com.zk.blogapi.utils.enums
+#  -----------------------jwt----------------------------
+jwt:
+  #  jwt秘钥
+  secret: 13330152568
+  #  过期时间，单位毫秒，此处设置为一天的过期时间,24*60*60*1000
+  expirationTime: 86400000
+#  -----------------------md5-------------------------------
+md5:
+  #   md5加密的盐值
+  slot: zk
+#-----------------------自定义线程池----------------------------
+mythreadpool:
+  maxPoolSize: 20
+  corePoolSize: 10
+  queueCapacity: 200
+  keepAliveSeconds: 60

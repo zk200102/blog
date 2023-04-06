@@ -1,6 +1,8 @@
 package com.zk.blogapi.controller;
 
+import com.zk.blogapi.annotation.LogAnnotation;
 import com.zk.blogapi.service.LoginService;
+import com.zk.blogapi.utils.enums.LogTypeEnum;
 import com.zk.blogapi.vo.RegisterVo;
 import com.zk.common.Result;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +25,7 @@ public class RegisterController {
 
     @PostMapping
     @ApiOperation("注册")
+    @LogAnnotation(model = "注册",logType = LogTypeEnum.ADD,desc = "注册")
     public Result register(@RequestBody RegisterVo registerVo){
         return loginService.register(registerVo);
     }

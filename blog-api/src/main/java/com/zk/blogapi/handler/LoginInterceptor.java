@@ -5,7 +5,6 @@ import com.zk.blogapi.entity.SysUser;
 import com.zk.blogapi.service.SysUserService;
 import com.zk.blogapi.utils.JwtUtils;
 import com.zk.blogapi.utils.UserThreadLocal;
-import com.zk.blogapi.utils.enums.ErrorCode;
 import com.zk.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -16,6 +15,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import static com.zk.blogapi.utils.enums.ErrorCode.NO_LOGIN;
+
 
 /**
  * author zk
@@ -43,7 +45,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         log.info("============================拦截器结束================================");
 //        判断token是否存在,不存在token拦截
         if (StringUtils.isBlank(token)){
-            Result result = Result.fail(ErrorCode.NO_LOGIN.getCode(), ErrorCode.NO_LOGIN.getMsg());
+            Result result = Result.fail(NO_LOGIN.getCode(), NO_LOGIN.getMsg());
 //            token不存在或不合法，调用response返回信息
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().print(JSON.toJSON(result));
@@ -52,7 +54,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 //      token认证
         String userId = JwtUtils.checkToken(token);
         if (StringUtils.isBlank(userId)){
-            Result result = Result.fail(ErrorCode.NO_LOGIN.getCode(), ErrorCode.NO_LOGIN.getMsg());
+            Result result = Result.fail(NO_LOGIN.getCode(), NO_LOGIN.getMsg());
 //            token不存在或不合法，调用response返回信息
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().print(JSON.toJSON(result));

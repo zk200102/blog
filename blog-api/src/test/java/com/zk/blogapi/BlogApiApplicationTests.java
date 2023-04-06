@@ -9,12 +9,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static com.zk.blogapi.utils.enums.AdminEnum.ADMIN_TRUE;
+
 @SpringBootTest
 class BlogApiApplicationTests {
 
     @Test
     void contextLoads() throws JsonProcessingException {
-        AdminEnum adminTrue = AdminEnum.ADMIN_TRUE;
+        AdminEnum adminTrue = ADMIN_TRUE;
         ObjectMapper objectMapper = new ObjectMapper();
         String s = objectMapper.writeValueAsString(adminTrue);
         System.out.println(s);
